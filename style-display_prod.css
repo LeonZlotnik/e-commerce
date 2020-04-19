@@ -1,0 +1,35 @@
+.cart{
+    position:fixed; top:90px; right:50px;
+    transform: translateX(-50%);
+    background: linear-gradient(to top, #232697, #0582AD );
+    width: 50px;
+    height: 50px;
+    line-height: 55px;
+    font-size: 22px;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cart a{
+    color: white;
+}
+
+.margin {
+list-style-type:none;
+width: 200px;
+margin: 1.5% 4%;
+box-shadow: 10px 10px 15px grey;;
+}
+
+.explainer{
+display: flex;
+font-size: 14px;
+}
+
+@media only screen and (max-width: 600px) {
+    .col-3 {
+      display:none;
+    }
+  }

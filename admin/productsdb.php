@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gestión de Productos</title>
+    <link rel="stylesheet" type="text/css" href="admin_controll.css">
 </head>
 <body>
     <?php require_once('admin_navbar.php')?>
     <br>
     <div class="col text-center">
         <a class="btn btn-primary btn-lg" href="dashboard.php">Atras</a>
-      <a href="crearproducto.php" class="btn btn-default btn btn-primary btn-lg">Crear Producto</a>
+        <a href="crearproducto.php" class="btn btn-default btn btn-primary btn-lg">Crear Producto</a>
     </div>
     <br>
     <section class="container">
@@ -33,6 +34,8 @@
                             <th scope='col'>Descripcion</th>
                             <th scope='col'>Extensión</th>
                             <th scope='col'>Registro</th>
+                            <th scope='col'>Eliminar</th>
+                            <th scope='col'>Editar</th>
                         </tr>
                     </thead>";
 
@@ -52,7 +55,9 @@
                             <td><img src='images/".$row["imagenes"]."' width='70%'></td>
                             <td>".$row["descripcion"]."</td>
                             <td>".$row["extension"]."</td>
-                            <td>".$row["registro"]."</td>";
+                            <td>".$row["registro"]."</td>
+                            <td><a href='productsdb.php?delete=".$row["id_producto"]."'><i class='fas fa-trash-alt'></i></a></td>
+                            <td><a href='crearproducto.php?edit=".$row["id_producto"]."'><i class='fas fa-edit'></i></a></td>";
                 }
                     echo "
                         </tbody>
@@ -62,6 +67,11 @@
                     echo "<div class='alert alert-warning' role='alert'>
                     No hay información por el momento.
                           </div>";
+                }
+
+                if(isset($_GET['delete'])){
+                    $id = $_GET['delete'];
+                    $conn->query("DELETE FROM productos WHERE id_producto = '$id'");
                 }
     
                 $connect-> close();

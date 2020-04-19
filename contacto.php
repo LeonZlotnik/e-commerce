@@ -36,6 +36,7 @@ header('Location:index.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contacto</title>
+    <link rel="stylesheet" type="text/css" href="background.css">
     <style>
       #msg{
         color: red;
@@ -46,7 +47,7 @@ header('Location:index.php');
 <body>
 <?php require_once('navbar.php')?>
 <br>
-<h2 class="text-center">Contacto</h2>
+<h2 class="text-center h1" style="color:#2334A2; text-shadow: 1.5px 1px 2px #525252;">Registro</h2>
 <br>
 <section class="container">
 <form action="" method="POST" id="form">
@@ -111,9 +112,10 @@ header('Location:index.php');
 </section>
 <br>
 <section class="container">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.3749988314507!2d-99.16720488548785!3d19.43939234550159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8c9a0780097%3A0x2bc080b00184fe2!2sCalle%20Francisco%20Pimentel%2061%2C%20San%20Rafael%2C%20Cuauht%C3%A9moc%2C%2006470%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1580099122357!5m2!1ses!2smx" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+<iframe class="border" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.3749988314507!2d-99.16720488548785!3d19.43939234550159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8c9a0780097%3A0x2bc080b00184fe2!2sCalle%20Francisco%20Pimentel%2061%2C%20San%20Rafael%2C%20Cuauht%C3%A9moc%2C%2006470%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1580099122357!5m2!1ses!2smx" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
 </section>
 <br>
+<?php require_once('footer.html')?>
 </body>
 </html>
 
@@ -131,11 +133,17 @@ if(pw.value !== val.value){
   msg.innerHTML = "La Contraseña no coincide";
 }else {
   console.log("OK");
+
+if(pw.value > 8){
+  e.preventDefault();
+  alert('La contraseña es muy larga bro!')
+}  
+  console.log("OK");
 };
 
 });
 
-  /*var pass = document.getElementById("password")
+  var pass = document.getElementById("password")
   pass.addEventListener('keyup', function(){
     checkPassword(pass.value);
   });
@@ -165,5 +173,5 @@ if(pw.value !== val.value){
         strengthBar.value = 100;
         break;
     }
-  }*/
+  }
 </script>

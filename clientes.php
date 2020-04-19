@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Administradores</title>
+    <link rel="stylesheet" type="text/css" href="background.css">
 </head>
 <body>
 <?php require_once('navbar.php')?>
 <br>
-<h2 class="text-center">Clientes</h2>
+<h2 class="text-center h1" style="color:#2334A2; text-shadow: 1.5px 1px 2px #525252;">Acceso Clientes</h2>
 <br>
 <section class="container">
 <form action="process.php" method="POST">
@@ -52,5 +53,23 @@
 ?>
 </form>
 </section>
+<br>
+<section class="container">
+<div class="card row">
+  <div class="card-body col-12">
+    <p class="card-text">
+    Para poder realizar compras en la plataforma es necesario acceder a su cuenta. Si no tiene un usuario porfavor vaya a la pestaña de "Registro" para crear su usario.
+    Todos los datos ingresados serán protegidos por Corpoh9 y no se conmpartiran con ninguna entidad externa.
+    </p>
+    <p class="card-text">
+    Si su usario es incorrecto favor de verificarlo o de lo contrario contactenos a servicios@mail.com para atenderle de forma puntual.
+    </p>
+  </div>
+</div>
+</section>
+<br>
+<br>
+<br>
+<?php require_once('footer.html')?>
 </body>
 </html>

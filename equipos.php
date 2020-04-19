@@ -7,36 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipos</title>
-    <style>
-    .cart{
-            position:fixed; top:90px; right:50px;
-            transform: translateX(-50%);
-            background: linear-gradient(to top, #232697, #0582AD );
-            width: 50px;
-            height: 50px;
-            line-height: 55px;
-            font-size: 22px;
-            text-align: center;
-            color: #fff;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-    
-    .cart a{
-            color: white;
-        }
-
-    .margin {
-        list-style-type:none;
-        width: 200px;
-        margin: 0 4%;
-        box-shadow: 10px 10px 15px grey;;
-    }
-    .explainer{
-        display: flex;
-        font-size: 14px;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="background.css">
+    <link rel="stylesheet" type="text/css" href="style-display_prod.css">
 </head>
 <body>
     <?php require_once('navbar.php')?>
@@ -45,7 +17,7 @@
         <a href="shopping_cart.php"><i class="fas fa-shopping-cart"></i></a>
     </div>
     <br>
-    <h2 class="text-center">Equipos</h2>
+    <h2 class="text-center h1" style="color:#2334A2; text-shadow: 1.5px 1px 2px #525252;">Equipos</h2>
     <br>
     <form class="container">
         <div class="form-group mx-sm-3 mb-2">
@@ -55,7 +27,7 @@
     <br>
 
     <section class="container">
-        <ul class="row"> 
+        <ul class="row" id="list"> 
         <?php
          $db = mysqli_connect("localhost","root","root","copoh9");
          if($db->connect_error){
@@ -66,7 +38,7 @@
          while ($row = mysqli_fetch_array($result)){
         ?>
             
-                <li class="card col-3 margin" id="<?php echo $row['subcategoria']?>">
+                <li class="card margin" style="width:270px;" id="<?php echo $row['subcategoria']?>">
                 <!--Corregir ruta de imagen-->
                 <img class="card-img-top" <?php echo "src='admin/images/".$row['imagenes']."'";?> width="15%" height="160px;" alt="Card image cap">
                     <div class="card-body">
@@ -84,7 +56,6 @@
                         </div>
                         <br>
                         <?php  echo "<a href='detalles.php?ID={$row['id_producto']}&producto={$row['nombre_producto']}' class='btn btn-primary'>Detalles</a>"; ?>
-                        <a href="#" class="btn btn-success"><i class="fas fa-cart-plus"></i></a>
                 </li>
         <?php
         }
@@ -95,5 +66,8 @@
         </ul>
     </section>
     <?php require_once('subcategories.php') ?>
+    <?php require_once('footer.html')?>
 </body>
 </html>
+
+<script type="text/javascript" src="search_engine.js"></script>

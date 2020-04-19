@@ -50,12 +50,16 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="background.css">
 </head>
 <style>
     #cantidad{
-        margin:0 6%;
-        width: 15%;
         display: contents;
+    }
+
+    #box-number{
+        width: 0 5%;
+        margin-right:3%;
     }
 
     .cart{
@@ -74,62 +78,45 @@ mysqli_close($conn);
     
     .cart a{
             color: white;
+            position: relative; top: 12px;
         }
 </style>
 <body>
 <?php require_once('navbar.php')?>
 <br>
+
 <div class="cart">
         <a href="shopping_cart.php"><i class="fas fa-shopping-cart"></i></a>
-    </div>
+</div>
+<br>
+<br>
  <section class="container">
     <div class="row">
-        <div class="col-8">
-            <br>
-            <div id="carouselExampleIndicators" class="carousel slide col-6" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img class="d-block w-100" <?php echo "src='admin/images/".$row['imagenes']."'";?> alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                    <img class="d-block w-100" <?php echo "src='admin/images/".$row['imagenes']."'";?> alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                    <img class="d-block w-100" <?php echo "src='admin/images/".$row['imagenes']."'";?> alt="Third slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+        <div class="col-6">
+            <div class="card bg-dark text-white" style="box-shadow: 5px 5px 8px grey;">
+                <img class="card-img" <?php echo "src='admin/images/".$row['imagenes']."'";?> alt="Card image">      
             </div>
         </div>
-        <div class="col-4">
+          
+        <div class="col-6">
             <h5 class="h3"><?php echo $row['nombre_producto']?></h5>
             <br>
-            <label>Description:</label>
+            <label><strong>Description:</strong></label>
             <p><?php echo $row['descripcion']?></p>
             <br>
-            <label>Especifications:</label>
+            <label><strong>Especifications:</strong></label>
             <p><?php echo $row['extension']?></p>
             <br>
             <div class="input-group-prepend">
                 <span class="input-group-text">$<?php echo $row['costo']?></span>
                 <form method="POST" id="cantidad">
                     <input type="hidden" name="nom_usuario" value="<?php echo $_SESSION['User'] ?>" class="form-control" id="inputCity" placeholder="0">
-                    <input type="number" name="cantidad" min="0" max="10" value="1" width ="40px;" class="form-control" id="inputCity" placeholder="0">
+                    <div id="box-number">
+                    <input type="number" name="cantidad" min="0" max="10" value="1" width ="10px;" class="form-control" id="inputCity" placeholder="0">
+                    </div>
                     <input type="hidden" name="producto" min="0" max="10" value="<?php echo $row['nombre_producto']?>" class="form-control" id="inputCity" placeholder="0">
                     <input type="hidden" name="costo" min="0" max="10" value="<?php echo $row['costo']?>" class="form-control" id="inputCity" placeholder="0">
-                <input type="submit" name="add_to_cart" class="btn btn-success" value="Agregar">
+                    <button type="submit" name="add_to_cart" class="btn btn-success"><i class="fas fa-cart-plus"></i></button>
                 </form>
                 <!--<a href="#" class="btn btn-success"><i class="fas fa-cart-plus"></i></a>-->
             </div>
@@ -141,4 +128,5 @@ mysqli_close($conn);
     <?php echo $success ?>
 </div>
 </body>
+<?php require_once('footer.html')?>
 </html>

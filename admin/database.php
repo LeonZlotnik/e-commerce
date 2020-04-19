@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Base de Usuarios</title>
+    <link rel="stylesheet" type="text/css" href="admin_controll.css">
 </head>
 <body>
     <?php require_once('admin_navbar.php')?>
@@ -26,7 +27,7 @@
                     <thead>
                         <tr>
                             <th scope='col'>#</th>
-                            <th scope='col'>Username</th>
+                            <th scope='col'>Usario</th>
                             <th scope='col'>Email</th>
                             <th scope='col'>Contraseña</th>
                             <th scope='col'>Direccion</th>
@@ -34,6 +35,7 @@
                             <th scope='col'>Estado</th>
                             <th scope='col'>CP</th>
                             <th scope='col'>Registro</th>
+                            <th scope='col'>Eliminar</th>
                         </tr>
                     </thead>";
 
@@ -53,7 +55,8 @@
                             <td>".$row["municipio"]."</td>
                             <td>".$row["estado"]."</td>
                             <td>".$row["cp"]."</td>
-                            <td>".$row["fecha"]."</td>";
+                            <td>".$row["fecha"]."</td>
+                            <td><a href='database.php?delete=".$row["id_registro"]."'><i class='fas fa-trash-alt'></i></a></td>";
                 }
                     echo "
                         </tbody>
@@ -63,6 +66,11 @@
                     echo "<div class='alert alert-warning' role='alert'>
                     No hay información por el momento.
                           </div>";
+                }
+
+                if(isset($_GET['delete'])){
+                    $id = $_GET['delete'];
+                    $conn->query("DELETE FROM registros WHERE id_registro = '$id'");
                 }
     
                 $connect-> close();
